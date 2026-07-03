@@ -67,9 +67,6 @@
   .hero-title .hero-main::before { content: ''; display: block; width: 44px; height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,0.55), transparent); margin: 0 auto 0.75rem; }
   .hero-title .hero-main::after { content: ''; display: block; width: 44px; height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,0.55), transparent); margin: 0.6rem auto 0; }
   .hero-tagline { margin-top: 1.5rem; font-size: clamp(0.75rem, 2.5vw, 0.95rem); letter-spacing: clamp(0.15em, 2vw, 0.3em); color: var(--text-dim); }
-  .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; font-size: 0.6rem; letter-spacing: 0.25em; color: var(--text-dim); text-transform: uppercase; opacity: 0; animation: fadeUp 1s 2.2s ease forwards; }
-  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollPulse 2s 2.5s ease-in-out infinite; }
-  @keyframes scrollPulse { 0%,100%{transform:scaleY(1);opacity:1} 50%{transform:scaleY(0.5);opacity:0.4} }
 
   /* ─── SECTIONS ─── */
   section { padding: clamp(3.5rem, 8vw, 7rem) 0; }
@@ -271,7 +268,7 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .curtain-line { animation: none; opacity: 0; }
-    .hero-content, .hero-scroll { animation: none; opacity: 1; }
+    .hero-content { animation: none; opacity: 1; }
   }
 </style>
 <style data-designer-overlay="1"></style></head>
@@ -309,7 +306,7 @@
     <h1 class="hero-title" data-om-id="8a66bc66:64"><span class="hero-unit" data-om-id="8a66bc66:65">劇団ユニット</span><span class="hero-main" data-om-id="8a66bc66:66">彩藍</span></h1>
     <p class="hero-tagline" id="hero-tagline" data-om-id="8a66bc66:67">最愛のメリーバッドエンド</p>
   </div>
-  <div class="hero-scroll" data-om-id="8a66bc66:68"><div class="scroll-line" data-om-id="8a66bc66:69"></div>Scroll</div>
+
 </section>
 
 <!-- ABOUT -->
