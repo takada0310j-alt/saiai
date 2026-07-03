@@ -56,7 +56,7 @@
   .curtain { position: absolute; inset: 0; display: flex; justify-content: space-between; pointer-events: none; z-index: 1; }
   .curtain-line { width: 1px; background: linear-gradient(to bottom, transparent, var(--gold-dim) 30%, var(--gold-dim) 70%, transparent); opacity: 0; transform: scaleY(0); transform-origin: center; animation: curtainOpen 1.6s cubic-bezier(0.77,0,0.18,1) forwards; }
   .curtain-line:nth-child(1){animation-delay:0.1s}.curtain-line:nth-child(2){animation-delay:0.25s}.curtain-line:nth-child(3){animation-delay:0.4s}.curtain-line:nth-child(4){animation-delay:0.55s}.curtain-line:nth-child(5){animation-delay:0.7s}.curtain-line:nth-child(6){animation-delay:0.85s}.curtain-line:nth-child(7){animation-delay:1.0s}
-  @keyframes curtainOpen { 0%{opacity:0;transform:scaleY(0)} 30%{opacity:1} 100%{opacity:0.18;transform:scaleY(1)} }
+  @keyframes curtainOpen { 0%{opacity:0;transform:scaleY(0)} 30%{opacity:1} 100%{opacity:0;transform:scaleY(1)} }
   .hero-content { position: relative; z-index: 2; opacity: 0; animation: fadeUp 1.2s 1.0s ease forwards; width: 100%; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
   .hero-en { font-family: 'Cormorant Garamond', serif; font-size: clamp(0.7rem, 2.5vw, 1.1rem); letter-spacing: clamp(0.2em, 3vw, 0.5em); color: var(--gold); text-transform: uppercase; margin-bottom: 1.2rem; }
@@ -113,6 +113,9 @@
   .perf-tag { font-size: 0.65rem; letter-spacing: 0.12em; border: 1px solid var(--gold-dim); color: var(--gold); padding: 0.12rem 0.5rem; }
   .perf-status { font-size: 0.7rem; letter-spacing: 0.15em; color: var(--text-dim); text-transform: uppercase; white-space: nowrap; padding-top: 0.2rem; }
   .perf-status.upcoming { color: var(--gold); }
+  #performances .container { text-align: center; }
+  #performances .perf-item { justify-items: center; }
+  #performances .perf-tags { justify-content: center; }
   .perf-detail-btn { display: inline-block; margin-top: 0.7rem; background: none; border: none; color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 0.8rem; letter-spacing: 0.1em; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 3px; -webkit-tap-highlight-color: transparent; }
   .perf-detail-btn:hover { color: var(--text); }
 
@@ -272,7 +275,7 @@
     .admin-tab { padding: 0.75rem 0.9rem; font-size: 0.68rem; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .curtain-line { animation: none; opacity: 0.18; }
+    .curtain-line { animation: none; opacity: 0; }
     .hero-content, .hero-scroll { animation: none; opacity: 1; }
   }
 </style>
@@ -363,17 +366,17 @@
       <div class="section-label" data-om-id="8a66bc66:181">Contact</div>
       <h2 class="section-title" data-om-id="8a66bc66:182">お問い合わせ</h2>
       <p class="contact-sub" data-om-id="8a66bc66:183">取材・コラボレーションのご相談など、<br data-om-id="8a66bc66:184">お気軽にご連絡ください。</p>
-      <div class="contact-form" data-om-id="8a66bc66:185">
+      <form class="contact-form" id="contact-form" data-om-id="8a66bc66:185">
         <div class="form-row" data-om-id="8a66bc66:186">
-          <div class="form-group" data-om-id="8a66bc66:187"><label data-om-id="8a66bc66:188">お名前</label><input type="text" placeholder="山田 太郎" data-om-id="8a66bc66:189"></div>
-          <div class="form-group" data-om-id="8a66bc66:190"><label data-om-id="8a66bc66:191">メールアドレス</label><input type="email" placeholder="example@mail.com" data-om-id="8a66bc66:192"></div>
+          <div class="form-group" data-om-id="8a66bc66:187"><label data-om-id="8a66bc66:188">お名前</label><input type="text" id="c-name" placeholder="山田 太郎" required data-om-id="8a66bc66:189"></div>
+          <div class="form-group" data-om-id="8a66bc66:190"><label data-om-id="8a66bc66:191">メールアドレス</label><input type="email" id="c-email" placeholder="example@mail.com" required data-om-id="8a66bc66:192"></div>
         </div>
         <div class="form-group" data-om-id="8a66bc66:193"><label data-om-id="8a66bc66:194">お問い合わせ種別</label>
-          <select data-om-id="8a66bc66:195"><option value="" disabled="" selected="" data-om-id="8a66bc66:196">選択してください</option><option data-om-id="8a66bc66:197">取材・メディア</option><option data-om-id="8a66bc66:198">コラボレーション・出演依頼</option><option data-om-id="8a66bc66:199">その他</option></select>
+          <select id="c-type" data-om-id="8a66bc66:195"><option value="" disabled selected data-om-id="8a66bc66:196">選択してください</option><option data-om-id="8a66bc66:197">取材・メディア</option><option data-om-id="8a66bc66:198">コラボレーション・出演依頼</option><option data-om-id="8a66bc66:199">その他</option></select>
         </div>
-        <div class="form-group" data-om-id="8a66bc66:200"><label data-om-id="8a66bc66:201">メッセージ</label><textarea placeholder="ご用件をご記入ください"></textarea></div>
-        <button class="btn-submit" type="button" data-om-id="8a66bc66:202">Send Message</button>
-      </div>
+        <div class="form-group" data-om-id="8a66bc66:200"><label data-om-id="8a66bc66:201">メッセージ</label><textarea id="c-message" placeholder="ご用件をご記入ください" required></textarea></div>
+        <button class="btn-submit" type="submit" id="contact-submit-btn" data-om-id="8a66bc66:202">Send Message</button>
+      </form>
     </div>
   </div>
 </section>
@@ -925,10 +928,49 @@ function exportStatic() {
 }
 
 /* ─── TOAST ─── */
-function showToast() {
-  var t = document.getElementById('toast'); t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 2200);
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  var original = t.textContent;
+  if (msg) t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); if (msg) t.textContent = original; }, 2200);
 }
+
+/* ─── CONTACT FORM ─── */
+var CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/gekidanyunittosaiai@gmail.com';
+(function(){
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('contact-submit-btn');
+    var name = document.getElementById('c-name').value.trim();
+    var email = document.getElementById('c-email').value.trim();
+    var type = document.getElementById('c-type').value;
+    var message = document.getElementById('c-message').value.trim();
+    if (!name || !email || !message) return;
+    btn.disabled = true; var originalLabel = btn.textContent; btn.textContent = '送信中...';
+    fetch(CONTACT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        inquiry_type: type || '(未選択)',
+        message: message,
+        _subject: '【SAIAI公式サイト】お問い合わせ: ' + name
+      })
+    }).then(function(res) {
+      if (!res.ok) throw new Error('send failed');
+      form.reset();
+      showToast('送信しました ✓');
+    }).catch(function() {
+      alert('送信に失敗しました。時間をおいて再度お試しいただくか、直接ご連絡ください。');
+    }).finally(function() {
+      btn.disabled = false; btn.textContent = originalLabel;
+    });
+  });
+})();
 
 /* ─── NAV & SCROLL ─── */
 var railSections = ['hero','about','members','performances','contact'];
